@@ -2,11 +2,12 @@
 
 # InlineResponse20010
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**segmentTags** | [**List&lt;SegmentTag&gt;**](SegmentTag.md) |  | 
+**taxes** | [**List&lt;InlineResponse20010Taxes&gt;**](InlineResponse20010Taxes.md) |  | 
 
 
 

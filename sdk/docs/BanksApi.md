@@ -15,8 +15,6 @@ Method | HTTP request | Description
 
 連携サービスの取得
 
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;連携しているサービスを取得する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_2\&quot;&gt;定義&lt;/h2&gt;  &lt;ul&gt; &lt;li&gt;type &lt;ul&gt; &lt;li&gt;bank_account : 銀行口座&lt;/li&gt;  &lt;li&gt;credit_card : クレジットカード&lt;/li&gt;  &lt;li&gt;wallet : その他の決済口座&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
-
 ### Example
 
 ```java
@@ -73,6 +71,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -86,11 +85,9 @@ Name | Type | Description  | Notes
 
 ## getBanks
 
-> InlineResponse2001 getBanks(offset, limit, type)
+> InlineResponse200 getBanks(offset, limit, type)
 
 連携サービス一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;連携しているサービス一覧を取得する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_2\&quot;&gt;定義&lt;/h2&gt;  &lt;ul&gt; &lt;li&gt;type &lt;ul&gt; &lt;li&gt;bank_account : 銀行口座&lt;/li&gt;  &lt;li&gt;credit_card : クレジットカード&lt;/li&gt;  &lt;li&gt;wallet : その他の決済口座&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
 
 ### Example
 
@@ -113,11 +110,11 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         BanksApi apiInstance = new BanksApi(defaultClient);
-        Integer offset = 56; // Integer | 取得レコードのオフセット (デフォルト: 0)
+        Long offset = 56L; // Long | 取得レコードのオフセット (デフォルト: 0)
         Integer limit = 56; // Integer | 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500)
-        String type = "type_example"; // String | サービス種別
+        String type = "bank_account"; // String | サービス種別
         try {
-            InlineResponse2001 result = apiInstance.getBanks(offset, limit, type);
+            InlineResponse200 result = apiInstance.getBanks(offset, limit, type);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BanksApi#getBanks");
@@ -135,13 +132,13 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **Integer**| 取得レコードのオフセット (デフォルト: 0) | [optional]
+ **offset** | **Long**| 取得レコードのオフセット (デフォルト: 0) | [optional]
  **limit** | **Integer**| 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) | [optional]
  **type** | **String**| サービス種別 | [optional] [enum: bank_account, credit_card, wallet]
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -151,6 +148,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

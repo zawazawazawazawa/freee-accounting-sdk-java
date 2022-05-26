@@ -18,8 +18,6 @@ Method | HTTP request | Description
 
 見積書の作成
 
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の見積書を作成する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_1\&quot;&gt;注意点&lt;/h2&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;partner_code, partner_idはどちらかの指定が必須です。ただし両方同時に指定することはできません。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;本APIでは見積内容(quotation_contents)は、最大100行までになります。&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-
 ### Example
 
 ```java
@@ -76,6 +74,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -92,8 +91,6 @@ Name | Type | Description  | Notes
 > destroyQuotation(id, companyId)
 
 見積書の削除
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の見積書を削除する&lt;/p&gt;
 
 ### Example
 
@@ -152,6 +149,7 @@ null (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -168,8 +166,6 @@ null (empty response body)
 > QuotationResponse getQuotation(id, companyId)
 
 見積書の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の見積書詳細を取得する&lt;/p&gt;
 
 ### Example
 
@@ -229,6 +225,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -242,11 +239,9 @@ Name | Type | Description  | Notes
 
 ## getQuotations
 
-> InlineResponse2007 getQuotations(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, quotationNumber, description, quotationStatus, offset, limit)
+> QuotationIndexResponse getQuotations(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, quotationNumber, description, quotationStatus, offset, limit)
 
 見積書一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の見積書一覧を取得する&lt;/p&gt; 
 
 ### Example
 
@@ -276,11 +271,11 @@ public class Example {
         String endIssueDate = "endIssueDate_example"; // String | 見積日の終了日(yyyy-mm-dd)
         String quotationNumber = "quotationNumber_example"; // String | 見積書番号
         String description = "description_example"; // String | 概要
-        String quotationStatus = "quotationStatus_example"; // String | 見積書ステータス  (unsubmitted: 送付待ち, submitted: 送付済み, all: 全て)
-        Integer offset = 56; // Integer | 取得レコードのオフセット (デフォルト: 0)
+        String quotationStatus = "all"; // String | 見積書ステータス  (unsubmitted: 送付待ち, submitted: 送付済み, all: 全て)
+        Long offset = 56L; // Long | 取得レコードのオフセット (デフォルト: 0)
         Integer limit = 56; // Integer | 取得レコードの件数 (デフォルト: 20, 最大: 100) 
         try {
-            InlineResponse2007 result = apiInstance.getQuotations(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, quotationNumber, description, quotationStatus, offset, limit);
+            QuotationIndexResponse result = apiInstance.getQuotations(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, quotationNumber, description, quotationStatus, offset, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotationsApi#getQuotations");
@@ -306,12 +301,12 @@ Name | Type | Description  | Notes
  **quotationNumber** | **String**| 見積書番号 | [optional]
  **description** | **String**| 概要 | [optional]
  **quotationStatus** | **String**| 見積書ステータス  (unsubmitted: 送付待ち, submitted: 送付済み, all: 全て) | [optional] [enum: all, unsubmitted, submitted]
- **offset** | **Integer**| 取得レコードのオフセット (デフォルト: 0) | [optional]
+ **offset** | **Long**| 取得レコードのオフセット (デフォルト: 0) | [optional]
  **limit** | **Integer**| 取得レコードの件数 (デフォルト: 20, 最大: 100)  | [optional]
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**QuotationIndexResponse**](QuotationIndexResponse.md)
 
 ### Authorization
 
@@ -321,6 +316,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -338,8 +334,6 @@ Name | Type | Description  | Notes
 > QuotationResponse updateQuotation(id, quotationUpdateParams)
 
 見積書の更新
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の見積書を更新する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_1\&quot;&gt;注意点&lt;/h2&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;partner_code, partner_idを両方同時に指定することはできません。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;本APIでは見積内容(quotation_contents)は、最大100行までになります。&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
 
 ### Example
 
@@ -398,6 +392,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

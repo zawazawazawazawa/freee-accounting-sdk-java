@@ -2,11 +2,12 @@
 
 # InlineResponse20012
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**taxes** | [**List&lt;Tax&gt;**](Tax.md) |  | 
+**users** | [**List&lt;User&gt;**](User.md) |  | 
 
 
 

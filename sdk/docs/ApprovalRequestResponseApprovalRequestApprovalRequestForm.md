@@ -2,11 +2,12 @@
 
 # ApprovalRequestResponseApprovalRequestApprovalRequestForm
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**parts** | [**List&lt;ApprovalRequestFormParts&gt;**](ApprovalRequestFormParts.md) | 申請フォームの項目 | 
+**parts** | [**List&lt;ApprovalRequestFormResponseApprovalRequestFormParts&gt;**](ApprovalRequestFormResponseApprovalRequestFormParts.md) | 申請フォームの項目 | 
 
 
 

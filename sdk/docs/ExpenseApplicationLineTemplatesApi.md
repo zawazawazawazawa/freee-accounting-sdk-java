@@ -74,6 +74,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -146,6 +147,7 @@ null (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -222,6 +224,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -235,11 +238,9 @@ Name | Type | Description  | Notes
 
 ## getExpenseApplicationLineTemplates
 
-> InlineResponse2003 getExpenseApplicationLineTemplates(companyId, offset, limit)
+> InlineResponse2002 getExpenseApplicationLineTemplates(companyId, offset, limit)
 
 経費科目一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の経費科目一覧を取得する&lt;/p&gt;
 
 ### Example
 
@@ -263,10 +264,10 @@ public class Example {
 
         ExpenseApplicationLineTemplatesApi apiInstance = new ExpenseApplicationLineTemplatesApi(defaultClient);
         Integer companyId = 56; // Integer | 事業所ID
-        Integer offset = 56; // Integer | 取得レコードのオフセット (デフォルト: 0)
+        Long offset = 56L; // Long | 取得レコードのオフセット (デフォルト: 0)
         Integer limit = 56; // Integer | 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100)
         try {
-            InlineResponse2003 result = apiInstance.getExpenseApplicationLineTemplates(companyId, offset, limit);
+            InlineResponse2002 result = apiInstance.getExpenseApplicationLineTemplates(companyId, offset, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ExpenseApplicationLineTemplatesApi#getExpenseApplicationLineTemplates");
@@ -285,12 +286,12 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **Integer**| 事業所ID |
- **offset** | **Integer**| 取得レコードのオフセット (デフォルト: 0) | [optional]
+ **offset** | **Long**| 取得レコードのオフセット (デフォルト: 0) | [optional]
  **limit** | **Integer**| 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) | [optional]
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -300,6 +301,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -374,6 +376,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

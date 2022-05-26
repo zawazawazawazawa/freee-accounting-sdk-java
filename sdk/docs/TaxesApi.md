@@ -16,8 +16,6 @@ Method | HTTP request | Description
 
 税区分コードの取得
 
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;税区分コードを取得する&lt;/p&gt;
-
 ### Example
 
 ```java
@@ -74,6 +72,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -87,11 +86,9 @@ Name | Type | Description  | Notes
 
 ## getTaxCodes
 
-> InlineResponse20012 getTaxCodes()
+> InlineResponse2009 getTaxCodes()
 
 税区分コード一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;税区分コード一覧を取得する&lt;/p&gt;
 
 ### Example
 
@@ -115,7 +112,7 @@ public class Example {
 
         TaxesApi apiInstance = new TaxesApi(defaultClient);
         try {
-            InlineResponse20012 result = apiInstance.getTaxCodes();
+            InlineResponse2009 result = apiInstance.getTaxCodes();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaxesApi#getTaxCodes");
@@ -134,7 +131,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -144,6 +141,7 @@ This endpoint does not need any parameter.
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -157,7 +155,7 @@ This endpoint does not need any parameter.
 
 ## getTaxesCompanies
 
-> InlineResponse20013 getTaxesCompanies(companyId)
+> InlineResponse20010 getTaxesCompanies(companyId)
 
 税区分コード詳細一覧の取得
 
@@ -184,7 +182,7 @@ public class Example {
         TaxesApi apiInstance = new TaxesApi(defaultClient);
         Integer companyId = 56; // Integer | 事業所ID
         try {
-            InlineResponse20013 result = apiInstance.getTaxesCompanies(companyId);
+            InlineResponse20010 result = apiInstance.getTaxesCompanies(companyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaxesApi#getTaxesCompanies");
@@ -206,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20013**](InlineResponse20013.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -216,6 +214,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

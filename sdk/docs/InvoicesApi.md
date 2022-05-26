@@ -18,8 +18,6 @@ Method | HTTP request | Description
 
 請求書の作成
 
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の請求書を作成する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_1\&quot;&gt;注意点&lt;/h2&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;partner_code, partner_idはどちらかの指定が必須です。ただし両方同時に指定することはできません。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;請求書ステータス(invoice_status)を発行(issue)で利用した場合、請求内容の合計金額が0円以上になる必要があります。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;本APIでは請求内容(invoice_contents)は、最大100行までになります。&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-
 ### Example
 
 ```java
@@ -76,6 +74,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -92,8 +91,6 @@ Name | Type | Description  | Notes
 > destroyInvoice(id, companyId)
 
 請求書の削除
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の請求書を削除する&lt;/p&gt;
 
 ### Example
 
@@ -152,6 +149,7 @@ null (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -168,8 +166,6 @@ null (empty response body)
 > InvoiceResponse getInvoice(id, companyId)
 
 請求書の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の請求書詳細を取得する&lt;/p&gt;
 
 ### Example
 
@@ -229,6 +225,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -242,11 +239,9 @@ Name | Type | Description  | Notes
 
 ## getInvoices
 
-> InlineResponse2004 getInvoices(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, startDueDate, endDueDate, invoiceNumber, description, invoiceStatus, paymentStatus, offset, limit)
+> InvoiceIndexResponse getInvoices(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, startDueDate, endDueDate, invoiceNumber, description, invoiceStatus, paymentStatus, offset, limit)
 
 請求書一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の請求書一覧を取得する&lt;/p&gt; 
 
 ### Example
 
@@ -278,12 +273,12 @@ public class Example {
         String endDueDate = "endDueDate_example"; // String | 期日の終了日(yyyy-mm-dd)
         String invoiceNumber = "invoiceNumber_example"; // String | 請求書番号
         String description = "description_example"; // String | 概要
-        String invoiceStatus = "invoiceStatus_example"; // String | 請求書ステータス  (draft: 下書き, applying: 申請中, remanded: 差し戻し, rejected: 却下, approved: 承認済み, unsubmitted: 送付待ち, submitted: 送付済み)
-        String paymentStatus = "paymentStatus_example"; // String | 入金ステータス  (unsettled: 入金待ち, settled: 入金済み)
-        Integer offset = 56; // Integer | 取得レコードのオフセット (デフォルト: 0)
+        String invoiceStatus = "draft"; // String | 請求書ステータス  (draft: 下書き, applying: 申請中, remanded: 差し戻し, rejected: 却下, approved: 承認済み, unsubmitted: 送付待ち, submitted: 送付済み)
+        String paymentStatus = "unsettled"; // String | 入金ステータス  (unsettled: 入金待ち, settled: 入金済み)
+        Long offset = 56L; // Long | 取得レコードのオフセット (デフォルト: 0)
         Integer limit = 56; // Integer | 取得レコードの件数 (デフォルト: 20, 最大: 100) 
         try {
-            InlineResponse2004 result = apiInstance.getInvoices(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, startDueDate, endDueDate, invoiceNumber, description, invoiceStatus, paymentStatus, offset, limit);
+            InvoiceIndexResponse result = apiInstance.getInvoices(companyId, partnerId, partnerCode, startIssueDate, endIssueDate, startDueDate, endDueDate, invoiceNumber, description, invoiceStatus, paymentStatus, offset, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoicesApi#getInvoices");
@@ -312,12 +307,12 @@ Name | Type | Description  | Notes
  **description** | **String**| 概要 | [optional]
  **invoiceStatus** | **String**| 請求書ステータス  (draft: 下書き, applying: 申請中, remanded: 差し戻し, rejected: 却下, approved: 承認済み, unsubmitted: 送付待ち, submitted: 送付済み) | [optional] [enum: draft, applying, remanded, rejected, approved, unsubmitted, submitted]
  **paymentStatus** | **String**| 入金ステータス  (unsettled: 入金待ち, settled: 入金済み) | [optional] [enum: unsettled, settled]
- **offset** | **Integer**| 取得レコードのオフセット (デフォルト: 0) | [optional]
+ **offset** | **Long**| 取得レコードのオフセット (デフォルト: 0) | [optional]
  **limit** | **Integer**| 取得レコードの件数 (デフォルト: 20, 最大: 100)  | [optional]
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InvoiceIndexResponse**](InvoiceIndexResponse.md)
 
 ### Authorization
 
@@ -327,6 +322,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -344,8 +340,6 @@ Name | Type | Description  | Notes
 > InvoiceResponse updateInvoice(id, invoiceUpdateParams)
 
 請求書の更新
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の請求書を更新する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_1\&quot;&gt;注意点&lt;/h2&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;入金済みの請求書に対する金額関連の変更はできません。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;請求書ステータスは確定(issue)のみ指定可能です。請求書ステータスを確定する時のみ指定してください。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;請求書WFを利用している場合、承認済み請求書は承認権限を持たないユーザーでは更新できません。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;更新後の請求書ステータス(invoice_status)が下書き以外の場合、請求内容の合計金額が0円以上になる必要があります。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;partner_code, partner_idを両方同時に指定することはできません。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;本APIでは請求内容(invoice_contents)は、最大100行までになります。&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
 
 ### Example
 
@@ -404,6 +398,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

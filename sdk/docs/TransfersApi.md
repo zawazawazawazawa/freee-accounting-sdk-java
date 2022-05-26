@@ -18,8 +18,6 @@ Method | HTTP request | Description
 
 取引（振替）の作成
 
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の取引（振替）を作成する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_2\&quot;&gt;定義&lt;/h2&gt;  &lt;ul&gt; &lt;li&gt; &lt;p&gt;amount : 振替金額&lt;/p&gt; &lt;/li&gt;  &lt;li&gt; &lt;p&gt;from_walletable_type, to_walletable_type&lt;/p&gt;  &lt;ul&gt; &lt;li&gt;bank_account : 銀行口座&lt;/li&gt;  &lt;li&gt;credit_card : クレジットカード&lt;/li&gt;  &lt;li&gt;wallet : その他の決済口座&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
-
 ### Example
 
 ```java
@@ -76,6 +74,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -91,8 +90,6 @@ Name | Type | Description  | Notes
 > destroyTransfer(id, companyId)
 
 取引（振替）の削除する
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の取引（振替）を削除する&lt;/p&gt;
 
 ### Example
 
@@ -151,6 +148,7 @@ null (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -167,8 +165,6 @@ null (empty response body)
 > TransferResponse getTransfer(id, companyId)
 
 取引（振替）の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の取引（振替）を取得する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_2\&quot;&gt;定義&lt;/h2&gt;  &lt;ul&gt; &lt;li&gt; &lt;p&gt;amount : 振替金額&lt;/p&gt; &lt;/li&gt;  &lt;li&gt; &lt;p&gt;from_walletable_type, to_walletable_type&lt;/p&gt;  &lt;ul&gt; &lt;li&gt;bank_account : 銀行口座&lt;/li&gt;  &lt;li&gt;credit_card : クレジットカード&lt;/li&gt;  &lt;li&gt;wallet : その他の決済口座&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
 
 ### Example
 
@@ -228,6 +224,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -241,11 +238,9 @@ Name | Type | Description  | Notes
 
 ## getTransfers
 
-> InlineResponse20014 getTransfers(companyId, startDate, endDate, offset, limit)
+> InlineResponse20011 getTransfers(companyId, startDate, endDate, offset, limit)
 
 取引（振替）一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の取引（振替）一覧を取得する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_2\&quot;&gt;定義&lt;/h2&gt;  &lt;ul&gt; &lt;li&gt; &lt;p&gt;amount : 振替金額&lt;/p&gt; &lt;/li&gt;  &lt;li&gt; &lt;p&gt;from_walletable_type, to_walletable_type&lt;/p&gt;  &lt;ul&gt; &lt;li&gt;bank_account : 銀行口座&lt;/li&gt;  &lt;li&gt;credit_card : クレジットカード&lt;/li&gt;  &lt;li&gt;wallet : その他の決済口座&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
 
 ### Example
 
@@ -271,10 +266,10 @@ public class Example {
         Integer companyId = 56; // Integer | 事業所ID
         String startDate = "startDate_example"; // String | 振替日で絞込：開始日 (yyyy-mm-dd)
         String endDate = "endDate_example"; // String | 振替日で絞込：終了日 (yyyy-mm-dd)
-        Integer offset = 56; // Integer | 取得レコードのオフセット (デフォルト: 0)
+        Long offset = 56L; // Long | 取得レコードのオフセット (デフォルト: 0)
         Integer limit = 56; // Integer | 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) 
         try {
-            InlineResponse20014 result = apiInstance.getTransfers(companyId, startDate, endDate, offset, limit);
+            InlineResponse20011 result = apiInstance.getTransfers(companyId, startDate, endDate, offset, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TransfersApi#getTransfers");
@@ -295,12 +290,12 @@ Name | Type | Description  | Notes
  **companyId** | **Integer**| 事業所ID |
  **startDate** | **String**| 振替日で絞込：開始日 (yyyy-mm-dd) | [optional]
  **endDate** | **String**| 振替日で絞込：終了日 (yyyy-mm-dd) | [optional]
- **offset** | **Integer**| 取得レコードのオフセット (デフォルト: 0) | [optional]
+ **offset** | **Long**| 取得レコードのオフセット (デフォルト: 0) | [optional]
  **limit** | **Integer**| 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100)  | [optional]
 
 ### Return type
 
-[**InlineResponse20014**](InlineResponse20014.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -310,6 +305,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -326,8 +322,6 @@ Name | Type | Description  | Notes
 > TransferResponse updateTransfer(id, transferParams)
 
 取引（振替）の更新
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所の取引（振替）を更新する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;_2\&quot;&gt;定義&lt;/h2&gt;  &lt;ul&gt; &lt;li&gt; &lt;p&gt;amount : 振替金額&lt;/p&gt; &lt;/li&gt;  &lt;li&gt; &lt;p&gt;from_walletable_type, to_walletable_type&lt;/p&gt;  &lt;ul&gt; &lt;li&gt;bank_account : 銀行口座&lt;/li&gt;  &lt;li&gt;credit_card : クレジットカード&lt;/li&gt;  &lt;li&gt;wallet : その他の決済口座&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
 
 ### Example
 
@@ -386,6 +380,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

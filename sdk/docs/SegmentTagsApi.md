@@ -17,8 +17,6 @@ Method | HTTP request | Description
 
 セグメントの作成
 
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所のセグメントタグを作成する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;\&quot;&gt;注意点&lt;/h2&gt;  &lt;ul&gt;  &lt;li&gt;本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。&lt;/li&gt;  &lt;/ul&gt;
-
 ### Example
 
 ```java
@@ -77,6 +75,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -92,8 +91,6 @@ Name | Type | Description  | Notes
 > destroySegmentsTag(segmentId, id, companyId)
 
 セグメントタグの削除
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所のセグメントタグを削除する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;\&quot;&gt;注意点&lt;/h2&gt;  &lt;ul&gt;  &lt;li&gt;本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。&lt;/li&gt;  &lt;/ul&gt;
 
 ### Example
 
@@ -154,6 +151,7 @@ null (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -166,11 +164,9 @@ null (empty response body)
 
 ## getSegmentTags
 
-> InlineResponse20010 getSegmentTags(segmentId, companyId, offset, limit)
+> InlineResponse2007 getSegmentTags(segmentId, companyId, offset, limit)
 
 セグメントタグ一覧の取得
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所のセグメントタグ一覧を取得する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;\&quot;&gt;注意点&lt;/h2&gt;  &lt;ul&gt;  &lt;li&gt;本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。&lt;/li&gt;  &lt;/ul&gt;
 
 ### Example
 
@@ -195,10 +191,10 @@ public class Example {
         SegmentTagsApi apiInstance = new SegmentTagsApi(defaultClient);
         Integer segmentId = 56; // Integer | セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。   1: 法人向けプロフェッショナル, 法人向けエンタープライズプラン   2,3: 法人向け エンタープライズプラン 
         Integer companyId = 56; // Integer | 事業所ID
-        Integer offset = 56; // Integer | 取得レコードのオフセット (デフォルト: 0)
+        Long offset = 56L; // Long | 取得レコードのオフセット (デフォルト: 0)
         Integer limit = 56; // Integer | 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) 
         try {
-            InlineResponse20010 result = apiInstance.getSegmentTags(segmentId, companyId, offset, limit);
+            InlineResponse2007 result = apiInstance.getSegmentTags(segmentId, companyId, offset, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SegmentTagsApi#getSegmentTags");
@@ -218,12 +214,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **segmentId** | **Integer**| セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。   1: 法人向けプロフェッショナル, 法人向けエンタープライズプラン   2,3: 法人向け エンタープライズプラン  |
  **companyId** | **Integer**| 事業所ID |
- **offset** | **Integer**| 取得レコードのオフセット (デフォルト: 0) | [optional]
+ **offset** | **Long**| 取得レコードのオフセット (デフォルト: 0) | [optional]
  **limit** | **Integer**| 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500)  | [optional]
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -233,6 +229,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -249,8 +246,6 @@ Name | Type | Description  | Notes
 > SegmentTagResponse updateSegmentTag(segmentId, id, segmentTagParams)
 
 セグメントタグの更新
-
- &lt;h2 id&#x3D;\&quot;\&quot;&gt;概要&lt;/h2&gt;  &lt;p&gt;指定した事業所のセグメントタグを更新する&lt;/p&gt;  &lt;h2 id&#x3D;\&quot;\&quot;&gt;注意点&lt;/h2&gt;  &lt;ul&gt;  &lt;li&gt;本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。&lt;/li&gt;  &lt;/ul&gt;
 
 ### Example
 
@@ -311,6 +306,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
